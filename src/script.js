@@ -15,7 +15,10 @@ const elements = stripe.elements({
 
 // Create and mount Express Checkout Element
 const expressCheckoutElement = elements.create('expressCheckout', {
-  emailRequired: true
+  emailRequired: true,
+  paymentMethods: {
+    applePay: "always",
+  }
 });
 
 // Initialize payment request button
