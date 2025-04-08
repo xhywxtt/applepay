@@ -29,17 +29,6 @@ async function initialize() {
   }
 }
 
-// Handle successful payment method creation
-function handlePaymentMethodCreated(paymentMethodId) {
-  console.log('handlePaymentMethodCreated - Payment Method ID:', paymentMethodId);
-  const statusElement = document.getElementById('payment-status');
-  if (statusElement) {
-    statusElement.textContent = `Payment Method ID created: ${paymentMethodId}`;
-    statusElement.className = 'payment-status success';
-  }
-  console.log('Payment Method ID:', paymentMethodId);
-}
-
 // Handle payment error
 function handlePaymentError(error) {
   console.error('handlePaymentError - Error:', error);
@@ -54,19 +43,37 @@ function handlePaymentError(error) {
 // Handle payment request events
 expressCheckoutElement.on('confirm', async (event) => {
   try {
+    const {error: submitError} = await elements.submit();
+    if (submitError) {
+      handlePaymentError(submitError);
+      return;
+    }
+
+    // Create the PaymentIntent and obtain clientSecret
+    // TODO 需要后端支持
+    const res = await fetch('/create-intent', {
+      method: 'POST',
+    });
+    const {client_secret: clientSecret} = await res.json();
+
     const {error} = await stripe.confirmPayment({
+      // `elements` instance used to create the Express Checkout Element
       elements,
-      // Note: You need to get clientSecret from your server
-      clientSecret: 'YOUR_CLIENT_SECRET',
+      // `clientSecret` from the created PaymentIntent
+      clientSecret,
       confirmParams: {
-        return_url: 'https://your-domain.com/order/complete',
+        return_url: '/return.html',
       },
     });
 
     if (error) {
+      // This point is only reached if there's an immediate error when
+      // confirming the payment. Show the error to your customer (for example, payment details incomplete)
       handlePaymentError(error);
+    } else {
+      // The payment UI automatically closes with a success animation.
+      // Your customer is redirected to your `return_url`.
     }
-    // Customer will be redirected to return_url after successful payment
   } catch (error) {
     handlePaymentError(error instanceof Error ? error : new Error('Unknown error'));
   }
