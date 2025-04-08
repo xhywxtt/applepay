@@ -1,4 +1,8 @@
 /// <reference types="stripe-v3" />
+import VConsole from 'vconsole';
+
+// Initialize vConsole for mobile debugging
+new VConsole();
 
 // Initialize Stripe with test publishable key
 const stripe = Stripe('pk_test_51L1Fn6GlGJzWWZjtLSUOrxi8dWQg6y0P9IVyQYPcMZGzrzWtFEjR6FbnUYp8dSUD6cFMHv4iyetKECGOzG9IMOFI00iCyXqq1t');
@@ -18,6 +22,7 @@ const paymentRequest = stripe.paymentRequest({
 // Check if device supports Apple Pay
 async function checkApplePaySupport(): Promise<boolean> {
   const result = await paymentRequest.canMakePayment();
+  console.log("checkApplePaySupport result:", result);
   if (!result || !result.applePay) {
     const statusElement = document.getElementById('payment-status');
     if (statusElement) {
@@ -59,6 +64,7 @@ async function initialize(): Promise<void> {
 
 // Handle successful payment method creation
 function handlePaymentMethodCreated(paymentMethodId: string): void {
+  console.log('handlePaymentMethodCreated - Payment Method ID:', paymentMethodId);
   const statusElement = document.getElementById('payment-status');
   if (statusElement) {
     statusElement.textContent = `Payment Method ID created: ${paymentMethodId}`;
@@ -69,6 +75,7 @@ function handlePaymentMethodCreated(paymentMethodId: string): void {
 
 // Handle payment error
 function handlePaymentError(error: Error): void {
+  console.error('handlePaymentError - Error:', error);
   const statusElement = document.getElementById('payment-status');
   if (statusElement) {
     statusElement.textContent = `Error: ${error.message}`;
