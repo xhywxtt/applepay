@@ -1,4 +1,3 @@
-/// <reference types="stripe-v3" />
 import VConsole from 'vconsole';
 
 // Initialize vConsole for mobile debugging
@@ -19,9 +18,8 @@ const expressCheckoutElement = elements.create('expressCheckout', {
   emailRequired: true
 });
 
-
 // Initialize payment request button
-async function initialize(): Promise<void> {
+async function initialize() {
   const mountElement = document.getElementById('express-checkout-element');
   if (mountElement) {
     expressCheckoutElement.mount('#express-checkout-element');
@@ -29,7 +27,7 @@ async function initialize(): Promise<void> {
 }
 
 // Handle successful payment method creation
-function handlePaymentMethodCreated(paymentMethodId: string): void {
+function handlePaymentMethodCreated(paymentMethodId) {
   console.log('handlePaymentMethodCreated - Payment Method ID:', paymentMethodId);
   const statusElement = document.getElementById('payment-status');
   if (statusElement) {
@@ -40,7 +38,7 @@ function handlePaymentMethodCreated(paymentMethodId: string): void {
 }
 
 // Handle payment error
-function handlePaymentError(error: Error): void {
+function handlePaymentError(error) {
   console.error('handlePaymentError - Error:', error);
   const statusElement = document.getElementById('payment-status');
   if (statusElement) {
