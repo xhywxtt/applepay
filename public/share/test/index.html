@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share</title>
+    <meta name="apple-itunes-app" content="app-id=6472538445" />
+</head>
+<body>
+    <div class="container">
+        <h1>Share</h1>
+        <p>Share Copilot</p>
+    </div>
+</body>
+<script>
+    // write to clipboard
+    async function setClipboard(text) {
+        const type = "text/plain";
+        const clipboardItemData = {
+            [type]: text,
+        };
+        const clipboardItem = new ClipboardItem(clipboardItemData);
+        await navigator.clipboard.write([clipboardItem]);
+    }
+    setClipboard('https://zjhch123.github.io/share/dsadsadsa?referral=1234567890')
+    setTimeout(function() {
+        if (!document.hidden) { 
+            window.location = "https://apps.apple.com/app/6472538445"; 
+        }
+    }, 3000);
+</script>
+</html>

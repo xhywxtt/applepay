@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stripe Apple Pay Demo</title>
+  <link rel="stylesheet" href="./src/style.css">
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Stripe Apple Pay Demo</h1>
+    <div class="product">
+      <h2>Sample Product</h2>
+      <p>Price: $0.1</p>
+      <div id="payment-request-button"></div>
+      <div class="payment-status" id="payment-status"></div>
+    </div>
+  </div>
+  <script type="module" src="./src/script.ts"></script>
+</body>
+
+</html>
