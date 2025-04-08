@@ -9,7 +9,7 @@ const stripe = Stripe('pk_test_51L1Fn6GlGJzWWZjtLSUOrxi8dWQg6y0P9IVyQYPcMZGzrzWt
 // Create Elements instance with necessary options
 const elements = stripe.elements({
   mode: 'payment',
-  amount: 10, // Amount remains the same
+  amount: 50, // Amount remains the same
   currency: 'usd',
 });
 
