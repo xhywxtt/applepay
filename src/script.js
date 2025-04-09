@@ -27,7 +27,10 @@ const expressCheckoutElement = elements.create('expressCheckout', {
 
 // Initialize payment request button
 async function initialize() {
-  
+  // TODO temp
+  await fetch('https://e406-2404-f801-8050-3-702d-5709-269f-1d5f.ngrok-free.app/PaymentIntent/create-intent', {
+    method: 'POST',
+  });
   const mountElement = document.getElementById('express-checkout-element');
   if (mountElement) {
     expressCheckoutElement.mount('#express-checkout-element');
