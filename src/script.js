@@ -18,6 +18,10 @@ const expressCheckoutElement = elements.create('expressCheckout', {
   emailRequired: true,
   paymentMethods: {
     applePay: "always",
+    amazonPay: "never",
+    googlePay: "never",
+    link: "never",
+    paypal: "never"
   }
 });
 
