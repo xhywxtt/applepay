@@ -27,10 +27,6 @@ const expressCheckoutElement = elements.create('expressCheckout', {
 
 // Initialize payment request button
 async function initialize() {
-  // TODO temp
-  await fetch('https://c272-2404-f801-8050-3-c1b0-4aa7-cf2-db27.ngrok-free.app/PaymentIntent/create-intent', {
-    method: 'POST',
-  });
   const mountElement = document.getElementById('express-checkout-element');
   if (mountElement) {
     expressCheckoutElement.mount('#express-checkout-element');
@@ -58,8 +54,7 @@ expressCheckoutElement.on('confirm', async (event) => {
     }
 
     // Create the PaymentIntent and obtain clientSecret
-    // TODO 需要后端支持
-    const res = await fetch('https://e406-2404-f801-8050-3-702d-5709-269f-1d5f.ngrok-free.app/PaymentIntent/create-intent', {
+    const res = await fetch('https://c272-2404-f801-8050-3-c1b0-4aa7-cf2-db27.ngrok-free.app/PaymentIntent/create-intent', {
       method: 'POST',
     });
     const {client_secret: clientSecret} = await res.json();
