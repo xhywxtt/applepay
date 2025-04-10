@@ -9,6 +9,12 @@ export default defineConfig({
   },
   build: {
     outDir: 'docs',
-    assetsDir: 'assets'
+    assetsDir: 'assets',
+    rollupOptions: {
+      input: {
+        main: './index.html',
+        return: './return.html'
+      }
+    }
   }
 });

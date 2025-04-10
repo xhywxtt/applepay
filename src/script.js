@@ -68,7 +68,7 @@ expressCheckoutElement.on('confirm', async (event) => {
       // `clientSecret` from the created PaymentIntent
       clientSecret,
       confirmParams: {
-        return_url: '/return.html',
+        return_url: './return.html',
       },
     });
 
