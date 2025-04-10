@@ -79,6 +79,7 @@ expressCheckoutElement.on('confirm', async (event) => {
     } else {
       // The payment UI automatically closes with a success animation.
       // Your customer is redirected to your `return_url`.
+      alert('success!!!!')
     }
   } catch (error) {
     handlePaymentError(error instanceof Error ? error : new Error('Unknown error'));
