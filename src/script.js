@@ -62,6 +62,8 @@ expressCheckoutElement.on('confirm', async (event) => {
     });
     const {client_secret: clientSecret} = await res.json();
 
+    console.log("clientSecret", clientSecret)
+
     const {error} = await stripe.confirmPayment({
       // `elements` instance used to create the Express Checkout Element
       elements,
@@ -71,6 +73,8 @@ expressCheckoutElement.on('confirm', async (event) => {
         return_url: 'https://xhywxtt.github.io/applepay/return.html',
       },
     });
+
+    console.log("after confirmPayment")
 
     if (error) {
       // This point is only reached if there's an immediate error when
