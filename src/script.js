@@ -5,6 +5,7 @@ new VConsole();
 
 // Initialize Stripe with test publishable key
 const stripe = Stripe('pk_test_51L1Fn6GlGJzWWZjtLSUOrxi8dWQg6y0P9IVyQYPcMZGzrzWtFEjR6FbnUYp8dSUD6cFMHv4iyetKECGOzG9IMOFI00iCyXqq1t', {
+  apiVersion: "2025-03-31.basil",
   stripeAccount: 'acct_1LXGMHGai6YhuWz3'
 });
 
