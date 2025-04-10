@@ -4,7 +4,9 @@ import VConsole from 'vconsole';
 new VConsole();
 
 // Initialize Stripe with test publishable key
-const stripe = Stripe('pk_test_51L1Fn6GlGJzWWZjtLSUOrxi8dWQg6y0P9IVyQYPcMZGzrzWtFEjR6FbnUYp8dSUD6cFMHv4iyetKECGOzG9IMOFI00iCyXqq1t');
+const stripe = Stripe('pk_test_51L1Fn6GlGJzWWZjtLSUOrxi8dWQg6y0P9IVyQYPcMZGzrzWtFEjR6FbnUYp8dSUD6cFMHv4iyetKECGOzG9IMOFI00iCyXqq1t', {
+  stripeAccount: 'acct_1LXGMHGai6YhuWz3'
+});
 
 // Create Elements instance with necessary options
 const elements = stripe.elements({
